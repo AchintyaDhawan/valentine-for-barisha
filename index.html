@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Barisha 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.banner {
+    position: fixed;
+    top: 20px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    padding: 8px 20px;
+    border-radius: 50px;
+    color: white;
+}
+
+.card {
+    width: 90%;
+    max-width: 600px;
+    padding: 50px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(25px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(135deg, #ff4e78, #ff758c);
+    color: white;
+    cursor: pointer;
+    transition: 0.4s;
+    box-shadow: 0 10px 25px rgba(255,78,120,0.4);
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(255,78,120,0.6);
+}
+
+.message {
+    margin-top: 30px;
+    font-size: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s ease;
+}
+
+.teddy {
+    font-size: 90px;
+    margin-top: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: 1.2s ease;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 18px;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-600px);
+        opacity: 0;
+    }
+}
+
+/* Secret Heart */
+.secret-heart {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    opacity: 0.3;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.secret-heart:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    width: 85%;
+    max-width: 400px;
+    color: #ff4e78;
+    animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="banner">
+    Made with Love (and a little caffeine) ☕💖
+</div>
+
+<div class="card">
+    <h1>A Little Love for You 💌</h1>
+    <button onclick="showLove()">Click here if you need a little love!</button>
+
+    <div class="message" id="msg">
+        Happy Valentine's Day Barisha,<br>
+        everything you do makes me very proud and happy &lt;3
+    </div>
+
+    <div class="teddy" id="teddy">🧸🤍🌹</div>
+
+    <div class="secret-heart" onclick="openSecret()">💖</div>
+</div>
+
+<div class="modal" id="secretModal">
+    <div class="modal-content">
+        <h3>You found a secret love message! 💘</h3>
+        <p>
+            Barisha, loving you feels effortless.
+            You make ordinary moments glow.
+            I’m lucky to admire you every day. 💖
+        </p>
+        <br>
+        <button onclick="closeSecret()">Close</button>
+    </div>
+</div>
+
+<script>
+function showLove() {
+    const msg = document.getElementById("msg");
+    const teddy = document.getElementById("teddy");
+
+    msg.style.opacity = "1";
+    msg.style.transform = "translateY(0)";
+    teddy.style.opacity = "1";
+    teddy.style.transform = "scale(1)";
+
+    for (let i = 0; i < 25; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.querySelector(".card").appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }
+}
+
+function openSecret() {
+    document.getElementById("secretModal").style.display = "flex";
+}
+
+function closeSecret() {
+    document.getElementById("secretModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
